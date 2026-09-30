@@ -1,0 +1,35 @@
+# ============================================================
+# CP Coder Fine-Tuning — Python Dependencies
+# ============================================================
+# Install order matters:
+#   1. torch (CUDA wheel — match your CUDA version)
+#   2. unsloth (installs flash-attn and bitsandbytes)
+#   3. everything else
+
+# --- Core deep learning ---
+# Install PyTorch CUDA separately first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+torch>=2.2.0
+
+# --- Unsloth (handles QLoRA + flash-attn + fused kernels) ---
+# Install from PyPI (maintained wheel with all extras):
+#   pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
+unsloth
+
+# --- HuggingFace ecosystem ---
+transformers>=4.40.0
+datasets>=2.18.0
+trl>=0.8.6           # SFTTrainer
+peft>=0.10.0         # LoRA / PEFT utilities
+accelerate>=0.29.0   # multi-GPU / mixed precision
+bitsandbytes>=0.43.0 # 4-bit quantisation kernels
+
+# --- Experiment tracking ---
+wandb>=0.16.0
+
+# --- UI ---
+gradio>=4.26.0
+
+# --- Utilities ---
+huggingface_hub>=0.22.0   # push_to_hub
+tqdm>=4.66.0
